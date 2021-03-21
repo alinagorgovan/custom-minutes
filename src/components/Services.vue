@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import Navigation from './Navigation.vue';
 import Service from './Service.vue';
 
@@ -45,6 +45,11 @@ export default {
   components: {
     Navigation,
     Service,
+  },
+  computed: {
+    ...mapState('store', [
+      'services',
+    ]),
   },
 };
 </script>

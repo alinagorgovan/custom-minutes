@@ -1,11 +1,11 @@
 import BootstrapVue from 'bootstrap-vue';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import App from './App.vue';
 import router from './router';
 import 'bootstrap/dist/css/bootstrap.css';
-import Vuex from 'vuex'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
@@ -25,11 +25,11 @@ const store = new Vuex.Store({
     setBusinessConfig(state, configs) {
       state.configs = configs;
     },
-  }
-})
+  },
+});
 
 new Vue({
   router,
   render: (h) => h(App),
-  store: store,
+  store,
 }).$mount('#app');

@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   data() {
     return {
@@ -73,8 +75,6 @@ export default {
       'user',
       // 'configs',
     ]),
-  },
-  computed: {
     customStyle() {
       return `background-color: ${this.configs.color}`;
     },

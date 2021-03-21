@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex';
 
 import Navigation from './Navigation.vue';
 import FooterElement from './FooterElement.vue';
@@ -96,7 +96,7 @@ export default {
     ...mapState('store', [
       'user',
       'businessConfig',
-    ])
+    ]),
   },
   components: {
     Navigation,
@@ -105,23 +105,23 @@ export default {
   methods: {
     ...mapMutations('store', [
       'setServices',
-      'setBusinessConfig'
+      'setBusinessConfig',
     ]),
     async getUser() {
-
+      return [];
     },
     async getBusinessConfig(businessName) {
-
+      return businessName;
     },
     async getServices(businessName) {
-
+      return businessName;
     },
     getBusinessName() {
       const reader = new FileReader();
       return reader.readAsText('../assets/business_name.txt');
-    }
+    },
   },
-  mounted() {
+  async mounted() {
     const businessName = this.getBusinessName();
 
     this.setBusinessConfig(await this.getBusinessConfig(businessName));

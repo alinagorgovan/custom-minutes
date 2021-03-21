@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 import VueCal from 'vue-cal';
 import 'vue-cal/dist/vuecal.css';
 import 'vue-cal/dist/drag-and-drop';
@@ -88,6 +88,11 @@ export default {
     VueCal,
     Navigation,
   },
+  computed: {
+    ...mapState('store', [
+      'reservations',
+    ]),
+  },
   methods: {
     enableCalendar() {
       this.showCalendar = true;
@@ -109,8 +114,7 @@ export default {
       };
       await axios.post('http://192.168.100.49:5000/add_reservation', data);
     },
-
-    async getEvents(event) {
+    async getEvents() {
       const data = {
         business_db_name: '',
         service_name: 'Manichiura',
@@ -118,16 +122,16 @@ export default {
         client_phone: '1234',
       };
       await axios.get('http://192.168.100.49:5000/get_reservation', data);
-      events.push(
+      this.events.push(
         {
           start: '2021-03-21 15:30',
           end: '2021-03-21 16:30',
           title: 'Dad\'s birthday!',
           content: '<i class="v-icon material-icons">cake</i>',
           class: 'sport',
-        }
-      )
-    }
+        },
+      );
+    },
   },
 };
 </script>
